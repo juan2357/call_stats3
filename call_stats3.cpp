@@ -37,14 +37,13 @@ void Output(ofstream &,const call_record &);
 
 //Main PROGRAM
 int main( ) {
-
+	//Variable declarations
 	call_record customer_record;
-
 
 	ifstream in;    //declarreadFileg an input file stream
 	in.open("call_data.txt");
 
-	ofstream outFile;
+	ofstream outFile; //declaring an output file stream
 	outFile.open("weekly_call_info.txt");
 
 	if (in.fail())
@@ -110,11 +109,9 @@ void Process(call_record & customer_record)
 //Name:  Output
 //Precondition: The variables have been initialized and calculated
 //Postcondition: Results are displayed.
-//Description: Prints results from user input and calculations.
+//Description: Prints results from user input and calculations to a file
 void Output(ofstream & outFile, const call_record & customer_record) {
   //magic formula
-
-
 	outFile.setf(ios::showpoint);
 	outFile.precision(2);
 	outFile.setf(ios::fixed);
@@ -126,7 +123,6 @@ void Output(ofstream & outFile, const call_record & customer_record) {
   outFile<< std::left << setw(30)<< "Tax Rate " <<customer_record.tax_rate<<endl;
   outFile<< std::left << setw(30)<< "Call Tax " <<customer_record.call_tax<<endl;
   outFile<< std::left << setw(30)<< "Total Cost of Call " <<customer_record.total_cost<<endl<<endl;
-
 
   return;
 }
