@@ -41,8 +41,9 @@ int main( ) {
 	call_record customer_record;
 
 
-	ifstream in;    //declaring an input file stream
+	ifstream in;    //declarreadFileg an input file stream
 	in.open("call_data.txt");
+
 
 	if (in.fail())
 	{
@@ -61,6 +62,7 @@ int main( ) {
 	}
 
 	in.close();
+
 
 	return 0;
 }
@@ -108,18 +110,21 @@ void Process(call_record & customer_record)
 //Description: Prints results from user input and calculations.
 void Output(const call_record & customer_record) {
   //magic formula
+	ofstream outFile;
+	outFile.open("weekly_call_info.txt");
 
-	cout.setf(ios::showpoint);
-	cout.precision(2);
-	cout.setf(ios::fixed);
+	outFile.setf(ios::showpoint);
+	outFile.precision(2);
+	outFile.setf(ios::fixed);
 	/********************************************/
-	cout<< std::left << setw(30)<< "Cell Phone " <<customer_record.cell_number<<"  "<<endl;
-	cout<< std::left << setw(30)<< "Number of Relay Stations " <<customer_record.relays<<"   "<<endl;
-	cout<< std::left << setw(30)<< "Minutes Used " <<customer_record.call_length<<endl;
-  cout<< std::left << setw(30)<< "Net Cost " <<customer_record.net_cost<<endl;
-  cout<< std::left << setw(30)<< "Tax Rate " <<customer_record.tax_rate<<endl;
-  cout<< std::left << setw(30)<< "Call Tax " <<customer_record.call_tax<<endl;
-  cout<< std::left << setw(30)<< "Total Cost of Call " <<customer_record.total_cost<<endl<<endl;
+	outFile<< std::left << setw(30)<< "Cell Phone " <<customer_record.cell_number<<"  "<<endl;
+	outFile<< std::left << setw(30)<< "Number of Relay Stations " <<customer_record.relays<<"   "<<endl;
+	outFile<< std::left << setw(30)<< "Minutes Used " <<customer_record.call_length<<endl;
+  outFile<< std::left << setw(30)<< "Net Cost " <<customer_record.net_cost<<endl;
+  outFile<< std::left << setw(30)<< "Tax Rate " <<customer_record.tax_rate<<endl;
+  outFile<< std::left << setw(30)<< "Call Tax " <<customer_record.call_tax<<endl;
+  outFile<< std::left << setw(30)<< "Total Cost of Call " <<customer_record.total_cost<<endl<<endl;
 
+	outFile.close();
   return;
 }
