@@ -33,7 +33,7 @@ public:
 //Prototypes Prototypes
 void Input(ifstream &,call_record &);
 void Process(call_record &);
-void Output(const call_record &);
+void Output(ofstream &,const call_record &);
 
 //Main PROGRAM
 int main( ) {
@@ -44,6 +44,8 @@ int main( ) {
 	ifstream in;    //declarreadFileg an input file stream
 	in.open("call_data.txt");
 
+	ofstream outFile;
+	outFile.open("weekly_call_info.txt");
 
 	if (in.fail())
 	{
@@ -56,12 +58,13 @@ int main( ) {
 
 			Input(in,customer_record);
       Process(customer_record);
-      Output(customer_record);
+      Output(outFile,customer_record);
 
 		}
 	}
 
 	in.close();
+	outFile.close();
 
 
 	return 0;
@@ -108,10 +111,9 @@ void Process(call_record & customer_record)
 //Precondition: The variables have been initialized and calculated
 //Postcondition: Results are displayed.
 //Description: Prints results from user input and calculations.
-void Output(const call_record & customer_record) {
+void Output(ofstream & outFile, const call_record & customer_record) {
   //magic formula
-	ofstream outFile;
-	outFile.open("weekly_call_info.txt");
+
 
 	outFile.setf(ios::showpoint);
 	outFile.precision(2);
@@ -125,6 +127,6 @@ void Output(const call_record & customer_record) {
   outFile<< std::left << setw(30)<< "Call Tax " <<customer_record.call_tax<<endl;
   outFile<< std::left << setw(30)<< "Total Cost of Call " <<customer_record.total_cost<<endl<<endl;
 
-	outFile.close();
+
   return;
 }

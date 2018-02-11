@@ -1,8 +1,0 @@
-Cell Phone                    5617278899  
-Number of Relay Stations      40   
-Minutes Used                  56
-Net Cost                      17.92
-Tax Rate                      0.12
-Call Tax                      2.15
-Total Cost of Call            20.07
-
